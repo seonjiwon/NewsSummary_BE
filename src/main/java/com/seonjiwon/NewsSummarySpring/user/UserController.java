@@ -1,5 +1,6 @@
 package com.seonjiwon.NewsSummarySpring.user;
 
+import com.seonjiwon.NewsSummarySpring.common.GlobalCORS;
 import com.seonjiwon.NewsSummarySpring.user.dto.ChangeKeyword;
 import com.seonjiwon.NewsSummarySpring.user.dto.SignupRequest;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/users")
+@GlobalCORS
 public class UserController {
     private final UserService userService;
 
