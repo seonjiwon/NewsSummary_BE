@@ -37,7 +37,7 @@ public class SecurityConfig {
                 // 세션 사용 안함 -> JWT 기반 인증은 Stateless 방식
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/users/login", "/users", "/register").permitAll()
+                        .requestMatchers("/users/login", "/users", "/register", "/hello").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
