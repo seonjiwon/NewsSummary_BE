@@ -1,5 +1,6 @@
 package com.seonjiwon.NewsSummarySpring;
 
+import com.seonjiwon.NewsSummarySpring.common.GlobalCORS;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +9,7 @@ import java.util.Map;
 
 @RestController
 @Slf4j
+@GlobalCORS
 public class HelloController {
     @GetMapping("/hello")
     public Map<String, String> helloMessage() {
