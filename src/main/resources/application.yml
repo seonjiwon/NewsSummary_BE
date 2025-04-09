@@ -1,0 +1,25 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/news_summary}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD}
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+token:
+  expiration_time: 86400000
+  secret: ${TOKEN_SECRET}
+
+naver:
+  client_id: ${NAVER_CLIENT_ID}
+  client_secret: ${NAVER_CLIENT_SECRET}
+
+openai:
+  api-key: ${OPENAI_API_KEY}
