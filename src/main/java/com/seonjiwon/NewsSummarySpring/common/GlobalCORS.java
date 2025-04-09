@@ -9,21 +9,21 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@CrossOrigin(
-        origins = {
-                "http://localhost:5173",
-                "https://news-summary-fe.vercel.app"
-        },
-        methods = {
-                RequestMethod.GET,
-                RequestMethod.POST,
-                RequestMethod.PUT,
-                RequestMethod.DELETE,
-                RequestMethod.OPTIONS
-        },
-        allowCredentials = "true"
-)
+//@Target({ElementType.TYPE, ElementType.METHOD})
+//@Retention(RetentionPolicy.RUNTIME)
+//@CrossOrigin(
+//        origins = {
+//                "http://localhost:5173",
+//                "https://news-summary-fe.vercel.app"
+//        },
+//        methods = {
+//                RequestMethod.GET,
+//                RequestMethod.POST,
+//                RequestMethod.PUT,
+//                RequestMethod.DELETE,
+//                RequestMethod.OPTIONS
+//        },
+//        allowCredentials = "true"
+//)
 public @interface GlobalCORS {
 }
