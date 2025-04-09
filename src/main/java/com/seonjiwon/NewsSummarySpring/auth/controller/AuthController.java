@@ -3,7 +3,6 @@ package com.seonjiwon.NewsSummarySpring.auth.controller;
 import com.seonjiwon.NewsSummarySpring.auth.dto.LoginResult;
 import com.seonjiwon.NewsSummarySpring.auth.dto.LoginUser;
 import com.seonjiwon.NewsSummarySpring.auth.service.AuthService;
-import com.seonjiwon.NewsSummarySpring.common.GlobalCORS;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,7 +19,6 @@ import java.util.Map;
 @RequestMapping("/users")
 @Slf4j
 @RequiredArgsConstructor
-@GlobalCORS
 public class AuthController {
 
     private final AuthService authService;

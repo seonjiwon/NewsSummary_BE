@@ -1,6 +1,5 @@
 package com.seonjiwon.NewsSummarySpring.news;
 
-import com.seonjiwon.NewsSummarySpring.common.GlobalCORS;
 import com.seonjiwon.NewsSummarySpring.news.dto.NewsItem;
 import com.seonjiwon.NewsSummarySpring.user.User;
 import com.seonjiwon.NewsSummarySpring.user.UserRepository;
@@ -17,7 +16,6 @@ import java.util.Map;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 @Slf4j
-@GlobalCORS
 public class NewsController {
     private final NaverNewsService naverNewsService;
     private final UserRepository userRepository;
