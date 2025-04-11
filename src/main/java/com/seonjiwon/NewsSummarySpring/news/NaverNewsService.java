@@ -4,10 +4,12 @@ import com.seonjiwon.NewsSummarySpring.news.dto.NaverNewsResponse;
 import com.seonjiwon.NewsSummarySpring.news.dto.NewsItem;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,8 +54,8 @@ public class NaverNewsService {
         int start = (page - 1) * 10 + 1;
         String CombinedQuery = buildQuery(topic, keywords);
 
-        List<NewsItem> popularNews = searchNews("헤드라인", start, 10);
-        List<NewsItem> topicNews = searchNews(CombinedQuery, start, 10);
+        List<NewsItem> popularNews = cleanHtmlMarkup(searchNews("헤드라인", start, 10));
+        List<NewsItem> topicNews = cleanHtmlMarkup(searchNews(CombinedQuery, start, 10));
 
 
         HashMap<String, List<NewsItem>> result = new HashMap<>();
@@ -61,6 +63,24 @@ public class NaverNewsService {
         result.put("topic", topicNews);
 
         return result;
+    }
+
+    public List<NewsItem> cleanHtmlMarkup(List<NewsItem> newsItems){
+        List<NewsItem> cleanedList = new ArrayList<>();
+
+        for (NewsItem newsItem : newsItems) {
+            String cleanTitle = Jsoup.parse(newsItem.getTitle()).text();
+            String cleanDescription = Jsoup.parse(newsItem.getDescription()).text();
+
+            NewsItem cleanedItem = new NewsItem(
+                    cleanTitle,
+                    newsItem.getLink(),
+                    cleanDescription,
+                    newsItem.getPubDate()
+            );
+            cleanedList.add(cleanedItem);
+        }
+        return cleanedList;
     }
 
     public List<NewsItem> getPreferredNews(String topic, List<String> keywords){
